@@ -1,29 +1,56 @@
 package boletin1.ej3;
 
+import java.util.Scanner;
+
 public class PrincipalRectangulo {
 
 	public static void main(String[] args) {
 		
+		// Variable que guarda el perímetro y el área de dos rectángulos
 		int per1, per2, area1, area2;
+		// Variable que guarda las coordenadas de los puntos
+		int x1, x2, y1, y2;
 		
-		Rectangulo r1 = new Rectangulo();
-		Rectangulo r2 = new Rectangulo();
+		// Creamos el Scanner
+		Scanner reader = new Scanner (System.in);
 		
-		r1.x2 = 5;
-		r1.y2 = 5;
+		System.out.println("Introduce los valores del primer rectángulo");
+		System.out.println("Coordenada x1: ");
+		x1 = reader.nextInt();
+		System.out.println("Coordenada y1: ");
+		y1 = reader.nextInt();
+		System.out.println("Coordenada x2: ");
+		x2 = reader.nextInt();
+		System.out.println("Coordenada y2: ");
+		y2 = reader.nextInt();
 		
-		r2.x1 = 7;
-		r2.y1 = 9;
-		r2.x2 = 2;
-		r2.y2 = 3;
+		Rectangulo r1 = new Rectangulo(x1, y1, x2, y2);
 		
+		System.out.println("Introduce los valores del segundo rectángulo");
+		System.out.println("Coordenada x1: ");
+		x1 = reader.nextInt();
+		System.out.println("Coordenada y1: ");
+		y1 = reader.nextInt();
+		System.out.println("Coordenada x2: ");
+		x2 = reader.nextInt();
+		System.out.println("Coordenada y2: ");
+		y2 = reader.nextInt();
+		
+		Rectangulo r2 = new Rectangulo(x1, y1, x2, y2);
+		
+		// Calculamos el perímetro (suma de todos sus lados)
 		per1 = Math.abs(2 * (r1.x1 - r1.x2)) + Math.abs(2 * (r1.y1 - r1.y2));
 		per2 = Math.abs(2 * (r2.x1 - r2.x2)) + Math.abs(2 * (r2.y1 - r2.y2));
 		
+		// Calculamos el área (altura x ancho)
 		area1 = Math.abs((r1.x1 - r1.x2) * (r1.y1 - r1.y2));
 		area2 = Math.abs((r2.x1 - r2.x2) * (r2.y1 - r2.y2));
 		
+		// Imprimimos el resultado
 		System.out.println("Rectángulo 1: perímetro " + per1 + " y área " + area1);
 		System.out.println("Rectángulo 2: perímetro " + per2 + " y área " + area2);
+		
+		// Cerramos el Scanner
+		reader.close();
 	}
 }
