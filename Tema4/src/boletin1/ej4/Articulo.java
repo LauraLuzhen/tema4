@@ -8,19 +8,19 @@ public class Articulo {
 	/**
 	 * Variable que guarda el nombre 
 	 */
-	String nombre;
+	private String nombre;
 	/**
 	 * Variable que guarda el precio 
 	 */
-	int precio;
+	private int precio;
 	/**
 	 * Variable que guarda la cantidad que queda
 	 */
-	int cuantosQuedan;
+	private int cuantosQuedan;
 	/**
 	 * Constante que guarda el porcentaje del IVA
 	 */
-	final int IVA = 21;
+	public static final int IVA = 21;
 	
 	/**
 	 * Constructor con todos los parámetros
@@ -40,5 +40,61 @@ public class Articulo {
 		}
 	}
 	
-	
+	/**
+	 * Devuelve el nombre 
+	 * @return El nombre del artículo
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * Modifica el nombre
+	 * @param nombre El nombre del artículo no puede ser null ni cadena vacía
+	 */
+	public void setNombre(String nombre) {
+		if (nombre != null && !nombre.isBlank()) {
+			this.nombre = nombre;
+		}
+	}
+
+	/**
+	 * Devuelve el precio
+	 * @return El precio del artículo
+	 */
+	public int getPrecio() {
+		return precio;
+	}
+
+	/**
+	 * Modifica el precio 
+	 * @param precio El precio del artículo debe ser mayor que 0
+	 */
+	public void setPrecio(int precio) {
+		if (precio > 0) {
+			this.precio = precio;
+		}
+	}
+
+	/**
+	 * Devuelve la cantidad que queda
+	 * @return La cantidad que queda del artículo para vender
+	 */
+	public int getCuantosQuedan() {
+		return cuantosQuedan;
+	}
+
+	/**
+	 * Modifica la cantidad que queda
+	 * @param cuantosQuedan La cantidad que queda del arítulo para vender debe ser mayor o igual a 0
+	 */
+	public void setCuantosQuedan(int cuantosQuedan) {
+		if (cuantosQuedan >= 0) {
+			this.cuantosQuedan = cuantosQuedan;
+		}
+	}
+
+	public static int getIva() {
+		return IVA;
+	}
 }

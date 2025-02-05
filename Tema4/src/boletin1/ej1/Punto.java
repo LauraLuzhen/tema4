@@ -7,19 +7,46 @@ public class Punto {
 	/**
 	 * Variable que guarda la coordenada x de un punto
 	 */
-	int x;
+	private int x;
 	/**
 	 * Variable que guarda la coordenada y de un punto
 	 */
-	int y;
+	private int y;
+	
+	public Punto(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
 	
 	/**
-	 * Constructor con todos los parámetros
-	 * @param x Coordenada x del punto
-	 * @param y Coordenada y del punto
+	 * Devuelve la coordenada x 
+	 * @return La coordenada x del punto
 	 */
-	public Punto (int x, int y) {
+	public int getX() {
+		return x;
+	}
+	
+	/**
+	 * Modifica la x
+	 * @param x Número con la coordenada x de un punto
+	 */
+	public void setX(int x) {
 		this.x = x;
+	}
+
+	/**
+	 * Devuelve la coordenada y
+	 * @return La coordenada y del punto
+	 */
+	public int getY() {
+		return y;
+	}
+
+	/**
+	 * Modifica la y
+	 * @param y Número con la coordenada y de un punto
+	 */
+	public void setY(int y) {
 		this.y = y;
 	}
 }

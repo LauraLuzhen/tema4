@@ -26,11 +26,11 @@ public class PrincipalArticulo {
 		Articulo ar1 = new Articulo(nombre, precio, cuantosQuedan);
 
 		// Calculamos el PVP que es el precio con el IVA incluido
-		pvp = ((ar1.precio * ar1.IVA) / 100.0) + ar1.precio;
+		pvp = ((ar1.getPrecio() * Articulo.IVA) / 100.0) + ar1.getPrecio();
 
 		// Imprimimos los resultados
-		System.out.println(ar1.nombre + " - Precio:" + ar1.precio + "€ - IVA:" + ar1.IVA + "% - PVP:" + pvp
-				+ "€ - Cantidad:" + ar1.cuantosQuedan);
+		System.out.println(ar1.getNombre() + " - Precio:" + ar1.getPrecio() + "€ - IVA:" + Articulo.IVA + "% - PVP:" + pvp
+				+ "€ - Cantidad:" + ar1.getCuantosQuedan());
 		
 		// Cerramos el Scanner
 		reader.close();

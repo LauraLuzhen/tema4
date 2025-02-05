@@ -10,8 +10,8 @@ public class PrincipalPunto {
 		Punto coordenada3 = new Punto(-3, 7);
 		
 		// Imprimimos las coordenadas de cada una
-		System.out.println("Coordenadas 1: (" + coordenada1.x + "," + coordenada1.y + ")");
-		System.out.println("Coordenadas 2: (" + coordenada2.x + "," + coordenada2.y + ")");
-		System.out.println("Coordenadas 3: (" + coordenada3.x + "," + coordenada3.y + ")");
+		System.out.println("Coordenadas 1: (" + coordenada1.getX() + "," + coordenada1.getY() + ")");
+		System.out.println("Coordenadas 2: (" + coordenada2.getX() + "," + coordenada2.getY() + ")");
+		System.out.println("Coordenadas 3: (" + coordenada3.getX() + "," + coordenada3.getY() + ")");
 	}
 }

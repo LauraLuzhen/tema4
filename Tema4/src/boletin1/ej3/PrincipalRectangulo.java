@@ -39,12 +39,12 @@ public class PrincipalRectangulo {
 		Rectangulo r2 = new Rectangulo(x1, y1, x2, y2);
 		
 		// Calculamos el perímetro (suma de todos sus lados)
-		per1 = Math.abs(2 * (r1.x1 - r1.x2)) + Math.abs(2 * (r1.y1 - r1.y2));
-		per2 = Math.abs(2 * (r2.x1 - r2.x2)) + Math.abs(2 * (r2.y1 - r2.y2));
+		per1 = Math.abs(2 * (r1.getX1() - r1.getX2())) + Math.abs(2 * (r1.getY1() - r1.getY2()));
+		per2 = Math.abs(2 * (r2.getX1() - r2.getX2())) + Math.abs(2 * (r2.getY1() - r2.getY2()));
 		
 		// Calculamos el área (altura x ancho)
-		area1 = Math.abs((r1.x1 - r1.x2) * (r1.y1 - r1.y2));
-		area2 = Math.abs((r2.x1 - r2.x2) * (r2.y1 - r2.y2));
+		area1 = Math.abs((r1.getX1() - r1.getX2()) * (r1.getY1() - r1.getY2()));
+		area2 = Math.abs((r2.getX1() - r2.getX2()) * (r2.getY1() - r2.getY2()));
 		
 		// Imprimimos el resultado
 		System.out.println("Rectángulo 1: perímetro " + per1 + " y área " + area1);

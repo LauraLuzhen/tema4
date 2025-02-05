@@ -7,19 +7,19 @@ public class Persona {
 	/*
 	 * Variable que guarda el dni
 	 */
-	String dni;
+	private String dni;
 	/**
 	 * Variable que guarda el nombre
 	 */
-	String nombre;
+	private String nombre;
 	/**
 	 * Variable que guarda los apellidos
 	 */
-	String apellidos;
+	private String apellidos;
 	/**
 	 * Variable que guarda la edad
 	 */
-	int edad;
+	private int edad;
 	
 	/**
 	 * Constructor con todos los parámetros
@@ -43,5 +43,65 @@ public class Persona {
 		}
 	}
 	
-	
+	/**
+	 * Devuelve el nombre
+	 * @return El nombre de la persona
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * Modifica el nombre
+	 * @param nombre El nombre de la persona no puede ser null ni cadena vacía
+	 */
+	public void setNombre(String nombre) {
+		if (nombre != null && !nombre.isBlank()) {
+			this.nombre = nombre;
+		}
+	}
+
+	/**
+	 * Devuelve los apellidos
+	 * @return Los apellidos de la persona
+	 */
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	/**
+	 * Modifica los apellidos
+	 * @param apellidos Los apellidos de la persona no pueden ser null ni cadena vacía
+	 */
+	public void setApellidos(String apellidos) {
+		if (apellidos != null && !apellidos.isBlank()) {
+			this.apellidos = apellidos;
+		}
+	}
+
+	/**
+	 * Devuelve la edad
+	 * @return La edad de la persona
+	 */
+	public int getEdad() {
+		return edad;
+	}
+
+	/**
+	 * Modifica la edad
+	 * @param edad La edad de la persona tiene que ser mayor que 0
+	 */
+	public void setEdad(int edad) {
+		if (edad > 0) {
+			this.edad = edad;
+		}
+	}
+
+	/**
+	 * Devuelve el dni
+	 * @return El dni de la persona
+	 */
+	public String getDni() {
+		return dni;
+	}
 }
