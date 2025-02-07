@@ -104,4 +104,44 @@ public class Persona {
 	public String getDni() {
 		return dni;
 	}
+	
+	/**
+	 * Método que indica si es mayor de edad o no la persona
+	 * @return Si es mayor de edad true, en caso contrario false
+	 */
+	public boolean esMayorEdad () {
+		boolean esMayor = false;
+		if (this.edad >= 18) {
+			esMayor = true;
+		}
+		return esMayor;
+	}
+	
+	/**
+	 * Método que indica si la persona está jubilada o no (tiene más de 65 años)
+	 * @return Si tiene 65 años o más (está jubilado) true
+	 */
+	public boolean esJubilado () {
+		boolean esJubilado = false;
+		if (this.edad >= 65) {
+			esJubilado = true;
+		}
+		return esJubilado;
+	}
+	
+	/**
+	 * Método que calcula la diferncia de edad con la persona introducida
+	 * @param p Edad de la persona introducida
+	 * @return La diferencia entre la persona p y la actual
+	 */
+	public int diferenciaEdad (Persona p) {
+		int diferencia = Math.abs(this.edad - p.edad);
+		
+		return diferencia;
+	}
+
+	@Override
+	public String toString() {
+		return "Persona [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", edad=" + edad + "]";
+	}
 }

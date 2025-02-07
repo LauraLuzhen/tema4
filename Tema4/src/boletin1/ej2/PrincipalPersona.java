@@ -49,6 +49,18 @@ public class PrincipalPersona {
 		System.out.print(p2.getNombre() + " " + p2.getApellidos() + " con DNI " + p2.getDni());
 		System.out.println(p2.getEdad() < 18 ? " es menor de edad." : " es mayor de edad");
 		
+		// Método esMayorEdad
+		System.out.println("¿La persona 1 es mayor de edad? " + p1.esMayorEdad());
+		
+		// Método esJubilado
+		System.out.println("¿La persona 2 está jubilada? " + p2.esJubilado());
+		
+		// Método diferenciaEdad
+		System.out.println("La diferencia de edad entre p1 y p2 es " + p1.diferenciaEdad(p2));
+		
+		// Método toString
+		System.out.println(p1);
+		
 		// Cerramos el Scanner
 		reader.close();
 	}

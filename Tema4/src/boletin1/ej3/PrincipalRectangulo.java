@@ -50,6 +50,15 @@ public class PrincipalRectangulo {
 		System.out.println("Rectángulo 1: perímetro " + per1 + " y área " + area1);
 		System.out.println("Rectángulo 2: perímetro " + per2 + " y área " + area2);
 		
+		// Método getPerimetro
+		System.out.println("Perímetro del primer rectángulo: " + r1.getPerimetro());
+		
+		// Método getArea
+		System.out.println("Área del segundo rectángulo: " + r2.getArea());
+		
+		// Método toString
+		System.out.println(r1);
+		
 		// Cerramos el Scanner
 		reader.close();
 	}

@@ -97,4 +97,58 @@ public class Articulo {
 	public static int getIva() {
 		return IVA;
 	}
+
+	/**
+	 * Método que calcula el precio con el iva
+	 * @param precio Dinero que cuesta el artículo
+	 * @return El precio totoal del artículo con el iva
+	 */
+	public double getPVP (int precio) {
+		
+		double pvp = ((this.precio * Articulo.IVA) / 100.0) + this.precio;
+		
+		return pvp;
+	}
+	
+	/**
+	 * Método que devuelve el precio con el iva y con un descuento 
+	 * @param descuento Porcentaje que se reduce
+	 * @param pvp Precio con el iva
+	 * @return El precio con el iva y con el descuento
+	 */
+	public double getPVPDescuento (int descuento, int pvp) {
+		
+		double precioDescuento = pvp * descuento / 100;
+		
+		return precioDescuento;
+	}
+	
+	/**
+	 * Método que indica si se ha podido vender a la cantidad pedida y si se puede lo hace
+	 * @param cantidad Que quieren vender
+	 * @return Si se ha podido vender todo lo solicitado o no
+	 */
+	public boolean vender (int cantidad) {
+		
+		boolean vendido = false;
+		
+		if (this.cuantosQuedan - cantidad >= 0) {
+			this.cuantosQuedan -= cantidad;
+		}
+		
+		return vendido;
+	}
+	
+	/**
+	 * Método que añade una cantidad a la cantidad de artículo actuales
+	 * @param cantidad Que se va a añadir
+	 */
+	public void almacenar (int cantidad) {
+		this.cuantosQuedan += cantidad;
+	}
+
+	@Override
+	public String toString() {
+		return "Articulo [nombre=" + nombre + ", precio=" + precio + ", cuantosQuedan=" + cuantosQuedan + "]";
+	}
 }

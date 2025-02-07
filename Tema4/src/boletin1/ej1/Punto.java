@@ -13,6 +13,11 @@ public class Punto {
 	 */
 	private int y;
 	
+	/**
+	 * Constructor con todos los parámetros
+	 * @param x La coordenada x de un punto
+	 * @param y La coordenada y de un punto
+	 */
 	public Punto(int x, int y) {
 		this.x = x;
 		this.y = y;
@@ -48,5 +53,42 @@ public class Punto {
 	 */
 	public void setY(int y) {
 		this.y = y;
+	}
+	
+	/**
+	 * Método que modifica ambas coordenadas del punto
+	 * @param x Coordenada x del punto
+	 * @param y Coordenada y del punto
+	 */
+	public void setXY (int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	
+	/**
+	 * Método que modifica ambas coordenadas recibiendo la diferencia que hay
+	 * @param dx Diferencia de x con respecto a la anterior
+	 * @param dy Diferencia de y con respecto a la anterior
+	 */
+	public void desplaza (int dx, int dy) {
+		this.x = dx + x;
+		this.y = dy + y;
+	}
+	
+	/**
+	 * Método que calucla la distancia entre dos puntos
+	 * @param p Coordenadas del punto que queremos saber la distancia del anterior punto
+	 * @return La distancia entre el anterior punto y el punto introducido por parámetro
+	 */
+	public double distancia (Punto p) {
+		double cx = p.x - this.x; 
+		double cy = p.y - this.y;
+		double d = Math.sqrt(Math.pow(cx, 2) - Math.pow(cy, 2));
+		return d;
+	}
+
+	@Override
+	public String toString() {
+		return "Punto [x=" + x + ", y=" + y + "]";
 	}
 }

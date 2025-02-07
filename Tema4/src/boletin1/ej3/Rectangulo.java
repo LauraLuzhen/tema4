@@ -103,4 +103,66 @@ public class Rectangulo {
 			this.y2 = y2;
 		}
 	}
+	
+	/**
+	 * Método que modifica las coordenadas del primer punto x1 y y1
+	 * @param x1 Coordenada x del primer punto
+	 * @param y1 Coordenada y del primer punto
+	 */
+	public void setX1Y1 (int x1, int y1) {
+		this.x1 = x1;
+		this.y1 = y1;
+	}
+	
+	/**
+	 * Método que modifica las coordenadas del segundo punto x2 y y2
+	 * @param x2 Coordenada x del segundo punto
+	 * @param y2 Coordenada y del segundo punto
+	 */
+	public void setX2Y2 (int x2, int y2) {
+		this.x2 = x2;
+		this.y2 = y2;
+	}
+	
+	/**
+	 * Método que modifica todas las coordendas de ambos puntos
+	 * @param x1 Coordenada x del primer punto
+	 * @param y1 Coordenada y del primer punto
+	 * @param x2 Coordenada x del segundo punto
+	 * @param y2 Coordenada y del segundo punto
+	 */
+	public void setAll (int x1, int y1, int x2, int y2) {
+		this.x1 = x1;
+		this.y1 = y1;
+		this.x2 = x2;
+		this.y2 = y2;
+	}
+	
+	/**
+	 * Método que calcula el perímetro del rectángulo
+	 * @return El resultado del cálculo del perímetro
+	 */
+	public int getPerimetro () {
+		
+		int per = Math.abs(2 * (this.x1 - this.x2)) + Math.abs(2 * (this.y1 - this.y2));
+		
+		return per;
+	}
+	
+	/**
+	 * Método que calcula el área del rectángulo
+	 * @return El resultado del área del rectángulo 
+	 */
+	public int getArea () {
+		int area = Math.abs((this.x1 - this.x2) * (this.y1 - this.y2));
+		
+		return area;
+	}
+
+	@Override
+	public String toString() {
+		return "Rectangulo [x1=" + x1 + ", y1=" + y1 + ", x2=" + x2 + ", y2=" + y2 + "]";
+	}
+	
+	
 }
