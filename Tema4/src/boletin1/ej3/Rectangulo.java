@@ -18,16 +18,10 @@ public class Rectangulo {
 	 * @param y2 Coordenada y de la esquina superior derecha
 	 */
 	public Rectangulo(int x1, int y1, int x2, int y2) {
-		if (x1 < x2 ) {
+		if (x1 < x2 && y1 < y2) {
 			this.x1 = x1;
-		}
-		if (y1 < y2) {
 			this.y1 = y1;
-		}
-		if (x2 > x1) {
 			this.x2 = x2;
-		}
-		if (y2 > y1) {
 			this.y2 = y2;
 		}
 	}
@@ -110,8 +104,10 @@ public class Rectangulo {
 	 * @param y1 Coordenada y del primer punto
 	 */
 	public void setX1Y1 (int x1, int y1) {
-		this.x1 = x1;
-		this.y1 = y1;
+		if (x1 < this.x2 && y1 < this.y2) {
+			this.x1 = x1;
+			this.y1 = y1;
+		}
 	}
 	
 	/**

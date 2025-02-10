@@ -22,6 +22,7 @@ public class Articulo {
 	 */
 	public static final int IVA = 21;
 	
+	
 	/**
 	 * Constructor con todos los parámetros
 	 * @param nombre Nombre del artículo
