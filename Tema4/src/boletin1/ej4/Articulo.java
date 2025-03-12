@@ -1,36 +1,33 @@
 package boletin1.ej4;
 
-/**
- * Clase que guarda los datos de un artículo
- */
 public class Articulo {
-
 	/**
-	 * Variable que guarda el nombre 
+	 * Atributo nombre del artículo
 	 */
 	private String nombre;
 	/**
-	 * Variable que guarda el precio 
+	 * Atributo precio del artículo sin el IVA
 	 */
-	private int precio;
-	/**
-	 * Variable que guarda la cantidad que queda
-	 */
-	private int cuantosQuedan;
+	private double precio;
 	/**
 	 * Constante que guarda el porcentaje del IVA
 	 */
-	public static final int IVA = 21;
-	
-	
+	public static final double IVA = 0.21;
 	/**
-	 * Constructor con todos los parámetros
-	 * @param nombre Nombre del artículo
-	 * @param precio Precio del artículo
-	 * @param cuantosQuedan Cantidad que queda en el almacén del artículo
+	 * Atributo que guardar cuantos artículos quedan
 	 */
-	public Articulo(String nombre, int precio, int cuantosQuedan) {
-		if (nombre != null && !nombre.isEmpty()) {
+	private int cuantosQuedan;
+
+	/**
+	 * Constructor de Articulo que recibe como parámetro todos los atributos de la
+	 * clase
+	 * 
+	 * @param nombre        El nombre del artículo
+	 * @param precio        El precio del artículo
+	 * @param cuantosQuedan La cantidad que queda del artículo
+	 */
+	public Articulo(String nombre, double precio, int cuantosQuedan) {
+		if (nombre != null && !nombre.isBlank()) {
 			this.nombre = nombre;
 		}
 		if (precio > 0) {
@@ -40,116 +37,102 @@ public class Articulo {
 			this.cuantosQuedan = cuantosQuedan;
 		}
 	}
-	
-	/**
-	 * Devuelve el nombre 
-	 * @return El nombre del artículo
-	 */
-	public String getNombre() {
-		return nombre;
-	}
 
 	/**
-	 * Modifica el nombre
-	 * @param nombre El nombre del artículo no puede ser null ni cadena vacía
+	 * Método get del precio
+	 * 
+	 * @return El valor del precio del artículo
 	 */
-	public void setNombre(String nombre) {
-		if (nombre != null && !nombre.isBlank()) {
-			this.nombre = nombre;
-		}
-	}
-
-	/**
-	 * Devuelve el precio
-	 * @return El precio del artículo
-	 */
-	public int getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 
 	/**
-	 * Modifica el precio 
-	 * @param precio El precio del artículo debe ser mayor que 0
+	 * Método set del precio
+	 * 
+	 * @param precio El valor nuevo del precio
 	 */
-	public void setPrecio(int precio) {
-		if (precio > 0) {
-			this.precio = precio;
-		}
+	public void setPrecio(double precio) {
+		this.precio = precio;
 	}
 
 	/**
-	 * Devuelve la cantidad que queda
-	 * @return La cantidad que queda del artículo para vender
+	 * Método get de cuantos quedan
+	 * 
+	 * @return La cantidad de cuantos quedan de un artículo
 	 */
 	public int getCuantosQuedan() {
 		return cuantosQuedan;
 	}
 
 	/**
-	 * Modifica la cantidad que queda
-	 * @param cuantosQuedan La cantidad que queda del arítulo para vender debe ser mayor o igual a 0
+	 * Método set de cuantos quedan
+	 * 
+	 * @param cuantosQuedan El valor de cuantos quedan del artículo
 	 */
 	public void setCuantosQuedan(int cuantosQuedan) {
-		if (cuantosQuedan >= 0) {
-			this.cuantosQuedan = cuantosQuedan;
-		}
-	}
-
-	public static int getIva() {
-		return IVA;
+		this.cuantosQuedan = cuantosQuedan;
 	}
 
 	/**
-	 * Método que calcula el precio con el iva
-	 * @param precio Dinero que cuesta el artículo
-	 * @return El precio totoal del artículo con el iva
+	 * Método get del nombre
+	 * 
+	 * @return El valor del nombre del artículo
 	 */
-	public double getPVP (int precio) {
-		
-		double pvp = ((this.precio * Articulo.IVA) / 100.0) + this.precio;
-		
-		return pvp;
+	public String getNombre() {
+		return nombre;
 	}
-	
+
 	/**
-	 * Método que devuelve el precio con el iva y con un descuento 
-	 * @param descuento Porcentaje que se reduce
-	 * @param pvp Precio con el iva
-	 * @return El precio con el iva y con el descuento
+	 * Método que devuelve el precio con el IVA
+	 * 
+	 * @return El precio del artículo con el IVA incluido
 	 */
-	public double getPVPDescuento (int descuento, int pvp) {
-		
-		double precioDescuento = pvp * descuento / 100;
-		
-		return precioDescuento;
+	public double getPVP() {
+		return (precio * IVA) + precio;
 	}
-	
+
 	/**
-	 * Método que indica si se ha podido vender a la cantidad pedida y si se puede lo hace
-	 * @param cantidad Que quieren vender
-	 * @return Si se ha podido vender todo lo solicitado o no
+	 * Método que descuenta un porcentaje al precio
+	 * 
+	 * @param descuento El porcentaje de descuento que se va a realizar
+	 * @return El descuento del artículo
 	 */
-	public boolean vender (int cantidad) {
-		
+	public double getDescuento(int descuento) {
+		return getPVP() - (getPVP() * descuento / 100);
+	}
+
+	/**
+	 * Método vender que devuelve si se ha podido vender una cantidad de un artículo
+	 * o no
+	 * 
+	 * @param cantidad La cantidad que se quiere vender
+	 * @return Si se ha podido vender o no
+	 */
+	public boolean vender(int cantidad) {
 		boolean vendido = false;
-		
-		if (this.cuantosQuedan - cantidad >= 0) {
+		if (cuantosQuedan - cantidad >= 0) {
 			this.cuantosQuedan -= cantidad;
+			vendido = true;
 		}
-		
 		return vendido;
 	}
-	
+
 	/**
-	 * Método que añade una cantidad a la cantidad de artículo actuales
-	 * @param cantidad Que se va a añadir
+	 * Método almacenar que aumenta la cantidad que queda de un artículo
+	 * 
+	 * @param cantidad La cantidad que queremos añadir al artículo
 	 */
-	public void almacenar (int cantidad) {
+	public void almacenar(int cantidad) {
 		this.cuantosQuedan += cantidad;
 	}
 
+	/**
+	 * Método toString de la clase Articulo
+	 */
 	@Override
 	public String toString() {
-		return "Articulo [nombre=" + nombre + ", precio=" + precio + ", cuantosQuedan=" + cuantosQuedan + "]";
+		return "Nombre: " + nombre + ", precio: " + precio + ", PVP: " + getPVP() + ", Cantidad que queda: "
+				+ cuantosQuedan;
 	}
 }

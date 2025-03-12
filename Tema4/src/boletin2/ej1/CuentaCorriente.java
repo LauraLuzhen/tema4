@@ -1,101 +1,98 @@
 package boletin2.ej1;
 
 public class CuentaCorriente {
-
 	/**
-	 * Variable que guarda el DNI de la cuenta
+	 * Atributo dni de la cuenta corriente
 	 */
 	private String dni;
-	
 	/**
-	 * Variable que guarda el nombre del titular de la cuenta
+	 * Atributo nombre de la cuenta corriente
 	 */
 	private String nombre;
-	
 	/**
-	 * Variable que guarda el saldo que tiene la cuenta
+	 * Atributo saldo de la cuenta corriente
 	 */
 	private double saldo;
-	
 	/**
-	 * Variable que guarda la nacionalidad del titular de la cuenta
+	 * Atributo nacionalidad de la cuenta corriente
 	 */
-	private Nacionalidad nacionalidad = Nacionalidad.EXTRANJERA;
-	
+	private Nacionalidad nacionalidad = Nacionalidad.ESPAÑOLA;
+
 	/**
-	 * Enum donde la nacionalidad puede ser española o extranjera
+	 * Enum de Nacionalidad
 	 */
 	enum Nacionalidad {
 		ESPAÑOLA, EXTRANJERA
-		} 
-	
-	/**
-	 * Construntor de CuentaCorriente
-	 * @param dni Del titular de la cuenta
-	 * @param saldoInicial De la cuenta
-	 */
-	public CuentaCorriente (String dni, double saldoInicial) {
-		if (dni != null && !dni.isBlank()) {
-			this.dni = dni;
-		}
-		if (saldoInicial > 0) {
-			this.saldo = saldoInicial;
-		}
 	}
-	
+
 	/**
 	 * Constructor de CuentaCorriente
-	 * @param dni Del titular de la cuenta
-	 * @param nombre Delt titular de la cuenta
-	 * @param saldoInicial De la cuenta
+	 * 
+	 * @param dni   El dni de la cuenta corriente
+	 * @param saldo El saldo de la cuenta corriente
 	 */
-	public CuentaCorriente (String dni, String nombre, double saldoInicial) {
+	public CuentaCorriente(String dni, double saldo) {
 		if (dni != null && !dni.isBlank()) {
 			this.dni = dni;
 		}
-		if (nombre != null && !nombre.isBlank()) {
-			this.nombre = nombre;
-		}
-		if (saldoInicial > 0) {
-			this.saldo = saldoInicial;
-		}
-	}
-	
-	/**
-	 * Constructor de CuentaCorriente que recibe todos los parámetros
-	 * @param dni Del titular de la cuenta
-	 * @param nombre Del titular de la cuenta
-	 * @param saldoInicial De la cuenta
-	 * @param nacionalidad Del titular de la cuenta
-	 */
-	public CuentaCorriente (String dni, String nombre, double saldoInicial, String nacionalidad) {
-		if (!dni.isBlank() && dni.length() == 9) {
-			this.dni = dni;
-		}
-		if (nombre != null && !nombre.isBlank()) {
-			this.nombre = nombre;
-		}
-		if (saldoInicial > 0) {
-			this.saldo = saldoInicial;
-		}
-		switch (nacionalidad) {
-		case "ESPAÑOLA" -> {
-			this.nacionalidad = Nacionalidad.ESPAÑOLA;
-		}
+		if (saldo >= 0) {
+			this.saldo = saldo;
 		}
 	}
 
 	/**
-	 * Obtenemos el contenido del nombre
-	 * @return El nombre del titular de la cuenta
+	 * Constructor de CuentaCorriente
+	 * 
+	 * @param dni    El dni de la cuenta corriente
+	 * @param nombre El nombre de la cuenta corriente
+	 * @param saldo  El saldo de la cuenta corriente
+	 */
+	public CuentaCorriente(String dni, String nombre, double saldo) {
+		if (dni != null && !dni.isBlank()) {
+			this.dni = dni;
+		}
+		if (nombre != null && !nombre.isBlank()) {
+			this.nombre = nombre;
+		}
+		if (saldo >= 0) {
+			this.saldo = saldo;
+		}
+	}
+
+	/**
+	 * Constructor de Cuenta Corriente
+	 * 
+	 * @param dni          El dni de la cuenta corriente
+	 * @param nombre       El nombre de la cuenta corriente
+	 * @param saldo        El saldo de la cuenta corriente
+	 * @param nacionalidad La nacionalidad de la cuenta corriente
+	 */
+	public CuentaCorriente(String dni, String nombre, double saldo, String nacionalidad) {
+		if (dni != null && !dni.isBlank()) {
+			this.dni = dni;
+		}
+		if (nombre != null && !nombre.isBlank()) {
+			this.nombre = nombre;
+		}
+		if (saldo >= 0) {
+			this.saldo = saldo;
+		}
+		setNacionalidad(nacionalidad);
+	}
+
+	/**
+	 * Método get del nombre
+	 * 
+	 * @return El valor del nombre de la cuenta corriente
 	 */
 	public String getNombre() {
 		return nombre;
 	}
 
 	/**
-	 * Modificamos el nombre
-	 * @param nombre Del titular de la cuenta
+	 * Método set del nombre
+	 * 
+	 * @param nombre El valor nuevo del nombre de la cuenta corriente
 	 */
 	public void setNombre(String nombre) {
 		if (nombre != null && !nombre.isBlank()) {
@@ -104,78 +101,108 @@ public class CuentaCorriente {
 	}
 
 	/**
-	 * Obtenemos el saldo
-	 * @return El saldo de la cuenta
+	 * Método get del saldo
+	 * 
+	 * @return El valor del saldo de la cuenta corriente
 	 */
 	public double getSaldo() {
 		return saldo;
 	}
 
 	/**
-	 * Modificamos el saldo
-	 * @param saldo De la cuenta
+	 * Método set del saldo
+	 * 
+	 * @param saldo El nuevo valor del saldo de la cuenta corriente
 	 */
 	public void setSaldo(double saldo) {
-		if (saldo > 0) {
+		if (saldo >= 0) {
 			this.saldo = saldo;
 		}
 	}
 
 	/**
-	 * Obtenemos el dni
-	 * @return El dni del titular de la cuenta
+	 * Método get de nacionalidad
+	 * 
+	 * @return El valor de la nacionalidad de la cuenta corriente
+	 */
+	public Nacionalidad getNacionalidad() {
+		return nacionalidad;
+	}
+
+	/**
+	 * Método set de nacionalidad
+	 * 
+	 * @param nacionalidad El nuevo valor de la nacionalidad
+	 */
+	public void setNacionalidad(String nacionalidad) {
+		nacionalidad = nacionalidad.toUpperCase();
+		switch (nacionalidad) {
+		case "ESPAÑOLA", "EXTRANJERA" -> {
+			this.nacionalidad = Nacionalidad.valueOf(nacionalidad);
+		}
+		}
+	}
+
+	/**
+	 * Método get del dni
+	 * 
+	 * @return El valor del dni de la cuenta corriente
 	 */
 	public String getDni() {
 		return dni;
 	}
-	
+
 	/**
-	 * Método que saca una cantidad de dinero de la cuenta
-	 * @param cantidad Que quiero sacar de la cuenta
-	 * @return True si se ha podido sacar la cantidad de dinero deseada
+	 * Método sacarDinero que saca una cantidad de dinero si tiene el saldo
+	 * suficiente
+	 * 
+	 * @param cantidad La cantidad que se va a sacar de la cuenta
+	 * @return Si se ha realizado la operación
 	 */
-	public boolean sacarDinero (double cantidad) {
-		boolean dineroSacado = false;
-		
-		if (cantidad < saldo) {
+	public boolean sacarDinero(int cantidad) {
+		boolean sacar = false;
+		if (saldo - Math.abs(cantidad) >= 0) {
 			this.saldo -= cantidad;
-			dineroSacado = true;
+			sacar = true;
 		}
-		
-		return dineroSacado;
+		return sacar;
 	}
 
 	/**
-	 * Método que ingresa una cantidad de dinero a la cuenta
-	 * @param cantidad Que quiero ingresar a la cuenta
-	 * @return True si se ha podido ingresar el dinero
+	 * Método ingresarDinero que ingresa una cantidad de dinero al saldo si es
+	 * positivo
+	 * 
+	 * @param cantidad La cantidad que se va a ingresar a la cuenta
+	 * @return Si se ha ingresado la cantidad
 	 */
-	public boolean ingresarDinero (double cantidad) {
-		boolean dineroIngresado = false;
-		
+	public boolean ingresarDinero(int cantidad) {
+		boolean ingreso = false;
 		if (cantidad > 0) {
 			this.saldo += cantidad;
-			dineroIngresado = true;
 		}
-		
-		return dineroIngresado;
-	}
-	
-	@Override
-	public String toString() {
-		return "CuentaCorriente [dni=" + dni + ", nombre=" + nombre + ", saldo=" + saldo + ", nacionalidad="
-				+ nacionalidad + "]";
+		return ingreso;
 	}
 
+	/**
+	 * Método toString de la clase CuentaCorriente
+	 */
+	@Override
+	public String toString() {
+		return "Cuenta corriente: dni " + dni + ", nombre " + nombre + ", saldo " + saldo + ", nacionalidad "
+				+ nacionalidad;
+	}
+
+	/**
+	 * Método equals de la clase CuentaCorriente, dos cuentas son iguales si
+	 * coinciden con el dni y nombre
+	 */
 	@Override
 	public boolean equals(Object obj) {
-		CuentaCorriente other = (CuentaCorriente) obj;
+		CuentaCorriente cuenta = (CuentaCorriente) obj;
 		boolean res = false;
-		
-		if (this.dni.equals(other.dni) && this.nombre.equals(other.nombre)) {
+		if (this.dni.equals(cuenta.dni) && this.nombre.equals(cuenta.nombre)) {
 			res = true;
 		}
-		
 		return res;
 	}
 }

@@ -1,50 +1,53 @@
 package boletin1.ej2;
 
 /**
- * Clase que guarda los datos de una persona
+ * Clase Persona donde se van a definir la información de una persona
  */
 public class Persona {
-	/*
-	 * Variable que guarda el dni
+	/**
+	 * Atributo dni que guarda el dni de la Persona
 	 */
 	private String dni;
 	/**
-	 * Variable que guarda el nombre
+	 * Atributo nombre que guarda el nombre de la Persona
 	 */
 	private String nombre;
 	/**
-	 * Variable que guarda los apellidos
+	 * Atributo apellidos que guarda el apellidos de la Persona
 	 */
 	private String apellidos;
 	/**
-	 * Variable que guarda la edad
+	 * Atributo edad que guarda el edad de la Persona
 	 */
 	private int edad;
-	
+
 	/**
-	 * Constructor con todos los parámetros
-	 * @param dni El dni de la persona
-	 * @param nombre El nombre de la persona
+	 * Constructor de Persona que recibe todos los atributos como parámetros de
+	 * entrada
+	 * 
+	 * @param dni       El dni de la persona
+	 * @param nombre    El nombre de la persona
 	 * @param apellidos Los apellidos de la persona
-	 * @param edad La edad de la persona
+	 * @param edad      La edad de la persona
 	 */
 	public Persona(String dni, String nombre, String apellidos, int edad) {
-		if (dni != null && !dni.isEmpty() && dni.length() == 9) {
+		if (dni != null && !dni.isBlank()) {
 			this.dni = dni;
 		}
-		if (nombre != null && !nombre.isEmpty()) {
+		if (nombre != null && !nombre.isBlank()) {
 			this.nombre = nombre;
 		}
-		if (apellidos != null && !apellidos.isEmpty()) {
+		if (apellidos != null && !apellidos.isBlank()) {
 			this.apellidos = apellidos;
 		}
-		if (edad > 0) {
+		if (edad >= 0) {
 			this.edad = edad;
 		}
 	}
-	
+
 	/**
-	 * Devuelve el nombre
+	 * Método get del nombre donde obetenemos el contenido
+	 * 
 	 * @return El nombre de la persona
 	 */
 	public String getNombre() {
@@ -52,8 +55,9 @@ public class Persona {
 	}
 
 	/**
-	 * Modifica el nombre
-	 * @param nombre El nombre de la persona no puede ser null ni cadena vacía
+	 * Método set del nombre donde modifica el nombre
+	 * 
+	 * @param nombre Nombre de la persona
 	 */
 	public void setNombre(String nombre) {
 		if (nombre != null && !nombre.isBlank()) {
@@ -62,7 +66,8 @@ public class Persona {
 	}
 
 	/**
-	 * Devuelve los apellidos
+	 * Método get de apellidos donde obetenemos el contenido
+	 * 
 	 * @return Los apellidos de la persona
 	 */
 	public String getApellidos() {
@@ -70,8 +75,9 @@ public class Persona {
 	}
 
 	/**
-	 * Modifica los apellidos
-	 * @param apellidos Los apellidos de la persona no pueden ser null ni cadena vacía
+	 * Método set de apellidos donde modificamos el contenido
+	 * 
+	 * @param apellidos Apellidos de la persona
 	 */
 	public void setApellidos(String apellidos) {
 		if (apellidos != null && !apellidos.isBlank()) {
@@ -80,68 +86,75 @@ public class Persona {
 	}
 
 	/**
-	 * Devuelve la edad
-	 * @return La edad de la persona
+	 * Método get de edad donde obtenemos la edad
+	 * 
+	 * @return Edad de la persona
 	 */
 	public int getEdad() {
 		return edad;
 	}
 
 	/**
-	 * Modifica la edad
-	 * @param edad La edad de la persona tiene que ser mayor que 0
+	 * Método set de edad donde modificamos la edad
+	 * 
+	 * @param edad Edad de la persona
 	 */
 	public void setEdad(int edad) {
-		if (edad > 0) {
+		if (edad >= 0) {
 			this.edad = edad;
 		}
 	}
 
 	/**
-	 * Devuelve el dni
-	 * @return El dni de la persona
+	 * Método get del dni donde obtenemos el dni
+	 * 
+	 * @return Dni de la persona
 	 */
 	public String getDni() {
 		return dni;
 	}
-	
+
 	/**
-	 * Método que indica si es mayor de edad o no la persona
-	 * @return Si es mayor de edad true, en caso contrario false
+	 * Método que devuelve si es o no mayor de edad la persona
+	 * 
+	 * @return Si es mayor de edad
 	 */
-	public boolean esMayorEdad () {
+	public boolean esMayorEdad() {
 		boolean esMayor = false;
-		if (this.edad >= 18) {
+		if (edad >= 18) {
 			esMayor = true;
 		}
 		return esMayor;
 	}
-	
+
 	/**
-	 * Método que indica si la persona está jubilada o no (tiene más de 65 años)
-	 * @return Si tiene 65 años o más (está jubilado) true
+	 * Método que devuelve si está jubilado o no
+	 * 
+	 * @return Si la persona está jubilada
 	 */
-	public boolean esJubilado () {
+	public boolean esJubilado() {
 		boolean esJubilado = false;
-		if (this.edad >= 65) {
+		if (edad >= 65) {
 			esJubilado = true;
 		}
 		return esJubilado;
 	}
-	
+
 	/**
-	 * Método que calcula la diferncia de edad con la persona introducida
-	 * @param p Edad de la persona introducida
-	 * @return La diferencia entre la persona p y la actual
+	 * Método que calcula la diferencia de edad entre dos personas
+	 * 
+	 * @param p Una persona que recibe por parámetro
+	 * @return La diferencia de edad entre p y la persona
 	 */
-	public int diferenciaEdad (Persona p) {
-		int diferencia = Math.abs(this.edad - p.edad);
-		
-		return diferencia;
+	public int diferenciaEdad(Persona p) {
+		return Math.abs(p.edad - this.edad);
 	}
 
+	/**
+	 * Método toString de Persona
+	 */
 	@Override
 	public String toString() {
-		return "Persona [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", edad=" + edad + "]";
+		return "DNI: " + dni + " Nombre: " + nombre + " Apellidos: " + apellidos + " Edad: " + edad;
 	}
 }

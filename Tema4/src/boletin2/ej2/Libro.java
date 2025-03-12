@@ -1,41 +1,44 @@
 package boletin2.ej2;
 
+/**
+ * Clase Libro donde guardamos la información de un libro
+ */
 public class Libro {
-
 	/**
-	 * Variable que guarda el título del libro
+	 * Atributo titulo del libro
 	 */
 	private String titulo;
 	/**
-	 * Variable que guarda el nombre del autor
+	 * Atributo autor del libro
 	 */
 	private String autor;
 	/**
-	 * Variable que guarda el número de ejemplares de un libro
+	 * Atributo ejemplares del libro
 	 */
-	private int numEjemplares;
+	private int ejemplares;
 	/**
-	 * Variable que guarda el total de número presato
+	 * Atributo presatados del libro
 	 */
-	private int numPrestado;
+	private int prestados;
 	/**
-	 * Variable que guarda el género por defecto de un libro
+	 * Atributo genero del libro
 	 */
-	private Genero genero = Genero.DIDÁCTICO;
-	
+	private Genero genero = Genero.NARRATIVO;
+
 	/**
-	 * Enum Genero que puede tomar los valores: narrativo, lírico, dramático, didáctico, poético
+	 * Enum Genero que guarda los diferentes géneros de un libro
 	 */
 	enum Genero {
 		NARRATIVO, LÍRICO, DRAMÁTICO, DIDÁCTICO, POÉTICO
 	}
-	
+
 	/**
-	 * Constructor Libro que recibe titulo y autor
-	 * @param titulo Del libro
-	 * @param autor Del libro
+	 * Constructor de Libro
+	 * 
+	 * @param titulo El titulo del libro
+	 * @param autor  El autor del libro
 	 */
-	public Libro (String titulo, String autor) {
+	public Libro(String titulo, String autor) {
 		if (titulo != null && !titulo.isBlank()) {
 			this.titulo = titulo;
 		}
@@ -43,194 +46,182 @@ public class Libro {
 			this.autor = autor;
 		}
 	}
-	
+
 	/**
-	 * Constructor Libro que recibe titulo, autor, numEjemplares, numPrestado
-	 * @param titulo Del libro
-	 * @param autor Del libro
-	 * @param numEjemplares Del libro
-	 * @param numPrestado Del libro
+	 * Constructor de Libro
+	 * 
+	 * @param titulo     El titulo del libro
+	 * @param autor      El autor del libro
+	 * @param ejemplares El número de ejemplares del libro
+	 * @param prestados  El número de prestados del libro
 	 */
-	public Libro (String titulo, String autor, int numEjemplares, int numPrestado) {
+	public Libro(String titulo, String autor, int ejemplares, int prestados) {
 		if (titulo != null && !titulo.isBlank()) {
 			this.titulo = titulo;
 		}
 		if (autor != null && !autor.isBlank()) {
 			this.autor = autor;
 		}
-		if (numEjemplares > 0) {
-			this.numEjemplares = numEjemplares;
-		}
-		if (numPrestado >= 0) {
-			this.numPrestado = numPrestado;
+		if (ejemplares > 0) {
+			this.ejemplares = ejemplares;
+			if (prestados <= ejemplares) {
+				this.prestados = prestados;
+			}
 		}
 	}
-	
+
 	/**
-	 * Constructor Libro que recibe todos los parámetros
-	 * @param titulo Del libro
-	 * @param autor Del libro
-	 * @param numEjemplares Del libro
-	 * @param numPrestado Del libro
-	 * @param genero Del libro
+	 * Constructor de Libro que recibe todos los atributos
+	 * 
+	 * @param titulo     El titulo del Libro
+	 * @param autor      El autor del libro
+	 * @param ejemplares El número de ejemplares del libro
+	 * @param prestados  El número de prestados del libro
+	 * @param genero     El género del libro
 	 */
-	public Libro (String titulo, String autor, int numEjemplares, int numPrestado, String genero) {
+	public Libro(String titulo, String autor, int ejemplares, int prestados, String genero) {
 		if (titulo != null && !titulo.isBlank()) {
 			this.titulo = titulo;
 		}
 		if (autor != null && !autor.isBlank()) {
 			this.autor = autor;
 		}
-		if (numEjemplares > 0) {
-			this.numEjemplares = numEjemplares;
+		if (ejemplares > 0) {
+			this.ejemplares = ejemplares;
+			if (prestados <= ejemplares) {
+				this.prestados = prestados;
+			}
 		}
-		if (numPrestado >= 0) {
-			this.numPrestado = numPrestado;
+	}
+
+	/**
+	 * Méetodo get de ejemplares
+	 * 
+	 * @return La cantidad de ejemplares del libro
+	 */
+	public int getEjemplares() {
+		return ejemplares;
+	}
+
+	/**
+	 * Método set de ejemplares
+	 * 
+	 * @param ejemplares La nueva cantidad de ejemplares del libro
+	 */
+	public void setEjemplares(int ejemplares) {
+		if (ejemplares > 0) {
+			this.ejemplares = ejemplares;
 		}
-		switch(genero) {
-		case "LÍRICO" -> {
-			this.genero = Genero.LÍRICO;
+	}
+
+	/**
+	 * Método get de prestados
+	 * 
+	 * @return La cantidad de prestados del libro
+	 */
+	public int getPrestados() {
+		return prestados;
+	}
+
+	/**
+	 * Método set de prestados
+	 * 
+	 * @param prestados La nueva cantidad de prestados del libro
+	 */
+	public void setPrestados(int prestados) {
+		if (prestados <= ejemplares) {
+			this.prestados = prestados;
 		}
-		case "DRAMÁTICO" -> {
-			this.genero = Genero.DRAMÁTICO;
-		}
-		case "DIDÁCTICO" -> {
-			this.genero = Genero.DRAMÁTICO;
-		}
-		case "POÉTICO" -> {
-			this.genero = Genero.POÉTICO;
+	}
+
+	/**
+	 * Método get del género
+	 * 
+	 * @return El género del libro
+	 */
+	public Genero getGenero() {
+		return genero;
+	}
+
+	/**
+	 * Método set del género
+	 * 
+	 * @param genero El nuevo género del Lirbo
+	 */
+	public void setGenero(String genero) {
+		genero = genero.toUpperCase();
+		switch (genero) {
+		case "NARRATIVO", "LÍRICO", "DRAMÁTICO", "DIDÁCTICO", "POÉTICO" -> {
+			this.genero = Genero.valueOf(genero);
 		}
 		}
 	}
 
 	/**
-	 * Obtiene el título
-	 * @return El título del libro
+	 * Método get del titulo
+	 * 
+	 * @return El titulo del libro
 	 */
 	public String getTitulo() {
 		return titulo;
 	}
 
 	/**
-	 * Modifica el título
-	 * @param titulo Del libro
-	 */
-	public void setTitulo(String titulo) {
-		if (titulo != null && !titulo.isBlank()) {
-			this.titulo = titulo;
-		}
-	}
-
-	/**
-	 * Obtenemos el autor
-	 * @return El nombre del autor del libro
+	 * Método get del autor
+	 * 
+	 * @return El autor del libro
 	 */
 	public String getAutor() {
 		return autor;
 	}
 
 	/**
-	 * Modifica el autor
-	 * @param autor Del libro
+	 * Método prestamo que aumenta uno el número de prestados si se puede realizar
+	 * 
+	 * @return Si se ha podido prestar el libro
 	 */
-	public void setAutor(String autor) {
-		if (autor != null && !autor.isBlank()) {
-			this.autor = autor;
-		}
-	}
-
-	/**
-	 * Obtenemos el número de ejemplares
-	 * @return El número de ejemplares que tiene el libro
-	 */
-	public int getNumEjemplares() {
-		return numEjemplares;
-	}
-
-	/**
-	 * Modificamos la cantidad de números de ejemplares
-	 * @param numEjemplares Del libro
-	 */
-	public void setNumEjemplares(int numEjemplares) {
-		if (numEjemplares > 0) {
-			this.numEjemplares = numEjemplares;
-		}
-	}
-
-	/**
-	 * Obtenemos el número prestado
-	 * @return Número de libros prestados
-	 */
-	public int getNumPrestado() {
-		return numPrestado;
-	}
-
-	/**
-	 * Modifica la cantidad de libros prestados
-	 * @param numPrestado Cantidad de libros prestados
-	 */
-	public void setNumPrestado(int numPrestado) {
-		if (numPrestado >= 0) {
-			this.numPrestado = numPrestado;
-		}
-	}
-
-	/**
-	 * Obtenemos el género
-	 * @return El género del libro
-	 */
-	public Genero getGenero() {
-		return genero;
-	}
-	
-	/**
-	 * Método que realiza el préstamo de un libro si quedan ejemplares disponibles
-	 * @return True si se ha realizado la operación
-	 */
-	public boolean prestamo () {
+	public boolean prestamo() {
 		boolean realizado = false;
-		
-		if (numPrestado < numEjemplares) {
-			this.numPrestado++;
+		if (prestados < ejemplares) {
+			this.prestados++;
 			realizado = true;
 		}
-		
-		return realizado;
-	}
-	
-	/**
-	 * Método que realiza la devolución de un libro si hay libros prestados
-	 * @return True si se ha realizado la operación
-	 */
-	public boolean devolucion () {
-		boolean realizado = false;
-		
-		if (numPrestado > 0) {
-			this.numPrestado--;
-			realizado = true;
-		}
-		
 		return realizado;
 	}
 
+	/**
+	 * Método devolucion que disminuye la cantidad de prestados si se puede realizar
+	 * 
+	 * @return Si se ha podido realizar la devolución
+	 */
+	public boolean devolucion() {
+		boolean realizado = false;
+		if (prestados > 0 && ejemplares > 0) {
+			this.prestados--;
+			realizado = true;
+		}
+		return realizado;
+	}
+
+	/**
+	 * Método toString de la clase Libro
+	 */
 	@Override
 	public String toString() {
-		return "Libro [titulo=" + titulo + ", autor=" + autor + ", numEjemplares=" + numEjemplares + ", numPrestado="
-				+ numPrestado + ", genero=" + genero + "]";
+		return "Libro " + titulo + " de " + autor + ", ejemplares " + ejemplares + " y prestados " + prestados
+				+ ", género " + genero;
 	}
 
-
+	/**
+	 * Método equals de la clase Libro
+	 */
 	@Override
 	public boolean equals(Object obj) {
-		Libro other = (Libro) obj;
+		Libro libro = (Libro) obj;
 		boolean res = false;
-		
-		if (this.autor.equals(other.autor) && this.titulo.equals(other.titulo)) {
+		if (this.titulo.equals(libro.titulo) && this.autor.equals(libro.autor)) {
 			res = true;
 		}
-		
 		return res;
 	}
-	
-	
 }
