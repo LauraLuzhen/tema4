@@ -14,7 +14,7 @@ public class Empleado {
 		}
 	}
 	
-	public Empleado(String dni, String nombre, double sueldoBase, int horasExtras, double importeHorasExtras) {
+	public Empleado(String dni, String nombre, double sueldoBase, int horasExtras) {
 		
 	}
 	
