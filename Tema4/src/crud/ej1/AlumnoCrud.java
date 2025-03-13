@@ -3,18 +3,10 @@ package crud.ej1;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-/**
- * Clase CRUD de la clase Alumno
- */
 public class AlumnoCrud {
-	/**
-	 * Creamos el conjunto donde contendrá toda la información de los alumnos
-	 */
+
 	private static Set<Alumno> alumnos = new LinkedHashSet<Alumno>();
-	
-	/**
-	 * Función que realiza una lista de todos los alumnos
-	 */
+
 	public static void listadoAlumnos() {
 		for (Alumno a: alumnos) {
 			System.out.println(a);
@@ -22,12 +14,31 @@ public class AlumnoCrud {
 		}
 	}
 	
-	/**
-	 * Función que añade un Alumno al conjunto
-	 * @param a Objeto de tipo alumno
-	 * @return Si se ha añadido correctamente
-	 */
 	public static boolean añadirAlumno(Alumno a) {
 		return alumnos.add(a);
+	}
+	
+	public static boolean modificarMedia(Alumno a, double media) {
+		boolean realizado = false;
+		Alumno alumno = buscarAlumno(a);
+		if (alumno != null) {
+			realizado = true;
+			alumno.setNotaMedia(media);
+		}
+		return realizado;
+	}
+	
+	private static Alumno buscarAlumno(Alumno a) {
+		Alumno alumno = null;
+		for (Alumno al: alumnos) {
+			if (al.equals(a)) {
+				alumno = a;
+			}
+		}
+		return alumno;
+	}
+	
+	public static boolean eliminarAlumno(Alumno a) {
+		return alumnos.remove(a);
 	}
 }

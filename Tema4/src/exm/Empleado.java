@@ -1,12 +1,14 @@
 package exm;
 
+import java.util.Objects;
+
 public class Empleado {
 
 	private String dni;
 	private String nombre;
 	private double sueldoBase;
 	private int horasExtras;
-	private static double importeHorasExtras = 25;
+	private static double importeHorasExtras = 10;
 	
 	public Empleado(String dni) {
 		if (dni != null && !dni.isBlank()) {
@@ -15,7 +17,18 @@ public class Empleado {
 	}
 	
 	public Empleado(String dni, String nombre, double sueldoBase, int horasExtras) {
-		
+		if (dni != null && !dni.isBlank()) {
+			this.dni = dni;
+		}
+		if (nombre != null && !nombre.isBlank()) {
+			this.nombre = nombre;
+		}
+		if (sueldoBase > 0) {
+			this.sueldoBase = sueldoBase;
+		}
+		if (horasExtras >= 0) {
+			this.horasExtras = horasExtras;
+		}
 	}
 	
 	public String getNombre() {
@@ -52,6 +65,12 @@ public class Empleado {
 		return importeHorasExtras;
 	}
 	
+	public static void setImporteHorasExtras(double importe) {
+		if (importe > 0) {
+			importeHorasExtras = importe;
+		}
+	}
+	
 	public String getDni() {
 		return dni;
 	}
@@ -67,6 +86,11 @@ public class Empleado {
 	@Override
 	public String toString() {
 		return dni + " " + nombre + "\nHoras extras: " + horasExtras + "\nSueldo bruto: " + sueldoBase;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(dni);
 	}
 	
 	@Override
