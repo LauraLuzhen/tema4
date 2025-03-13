@@ -92,6 +92,7 @@ public class Libro {
 				this.prestados = prestados;
 			}
 		}
+		setGenero(genero);
 	}
 
 	/**

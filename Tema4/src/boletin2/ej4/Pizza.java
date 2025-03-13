@@ -1,158 +1,157 @@
 package boletin2.ej4;
 
 public class Pizza {
-
 	/**
-	 * Variable que guarda el código único de la pizza
-	 */
-	private int codigo;
-	
-	/**
-	 * Variable que guarda el tamaño por defecto de la pizza
-	 */
-	private Tamaño tamaño = Tamaño.MEDIANA;
-	
-	/**
-	 * Variable que guarda el tipo de pizza por defecto
-	 */
-	private Tipo tipo = Tipo.CUATRO_QUESOS;
-	
-	/**
-	 * Variable que guarda el estado de la pizza
-	 */
-	private Estado estado = Estado.PEDIDA;
-	
-	/**
-	 * Enum del tamaño de la pizza
+	 * Enum tamaño que guarda los posibles tamaños
 	 */
 	enum Tamaño {
 		MEDIANA, FAMILIAR
 	}
-	
+
 	/**
-	 * Enum del tipo de pizza que puede ser
+	 * Enum Tipo que guarda los posibles tipos de una pizza
 	 */
 	enum Tipo {
 		MARGARITA, CUATRO_QUESOS, FUNGHI
 	}
-	
+
 	/**
-	 * Enum del estado de la pizza
+	 * Enum de estado del pedido de la pizza
 	 */
 	enum Estado {
 		PEDIDA, SERVIDA
 	}
-	
+
 	/**
-	 * Constructor de Pizza con su código, tamaño y tipo de pizza
-	 * @param codigo De la pizza
-	 * @param tamaño De la pizza
-	 * @param tipo De la pizza
+	 * Atributo codigo de la pizza
 	 */
-	public Pizza (int codigo, String tamaño, String tipo) {
-		if (codigo > 0) {
+	private int codigo;
+	/**
+	 * Atributo tamaño de la pizza
+	 */
+	private Tamaño tamaño = Tamaño.MEDIANA;
+	/**
+	 * Atributo tipo de la pizza
+	 */
+	private Tipo tipo = Tipo.CUATRO_QUESOS;
+	/**
+	 * Atributo estado de la pizza
+	 */
+	private Estado estado = Estado.PEDIDA;
+
+	/**
+	 * Constructor de Pizza que recibe todos los atributos de la clase
+	 * 
+	 * @param codigo El código de la pizza
+	 * @param tamaño El tamaño de la pizza
+	 * @param tipo   El tipo de pizza
+	 * @param estado El estado del pedido de la pizza
+	 */
+	public Pizza(int codigo, String tamaño, String tipo, String estado) {
+		if (codigo >= 0) {
 			this.codigo = codigo;
 		}
-		switch (tamaño) {
-		case "FAMILIAR" -> {
-			this.tamaño = Tamaño.FAMILIAR;
-		}
-		}
-		if (tipo != null && !tipo.isBlank()) {
-		switch (tipo) {
-		case "FUNGHI", "MARGARITA" -> {
-			this.tipo = Tipo.valueOf(tipo);
-		}
-		}
-		}
+		setTamaño(tamaño);
+		setTipo(tipo);
+		setEstado(estado);
 	}
 
 	/**
-	 * Obtenemos el tamaño de la pizza
-	 * @return
+	 * Método get de tamaño
+	 * 
+	 * @return El valor del tamaño de la pizza
 	 */
 	public Tamaño getTamaño() {
 		return tamaño;
 	}
 
 	/**
-	 * Modificamos el tamaño
-	 * @param tamaño De la pizza
+	 * Método set de tamaño
+	 * 
+	 * @param tamaño El nuevo tamaño de la pizza
 	 */
 	public void setTamaño(String tamaño) {
+		tamaño = tamaño.toUpperCase();
 		switch (tamaño) {
-		case "FAMILIAR" -> {
-			this.tamaño = Tamaño.FAMILIAR;
+		case "MEDIANA", "FAMILIAR" -> {
+			this.tamaño = Tamaño.valueOf(tamaño);
 		}
 		}
 	}
 
 	/**
-	 * Obtenemos el tipo 
-	 * @return El tipo de la pizza
+	 * Método get del tipo
+	 * 
+	 * @return El tipo de pizza
 	 */
 	public Tipo getTipo() {
 		return tipo;
 	}
 
 	/**
-	 * Modificamos el tipo
-	 * @param tipo De la pizza
+	 * Método set del tipo
+	 * 
+	 * @param tipo El nuevo tipo de la pizza
 	 */
 	public void setTipo(String tipo) {
-		if (tipo != null && !tipo.isBlank()) {
-			switch (tipo) {
-			case "FUNGHI", "MARGARITA" -> {
-				this.tipo = Tipo.valueOf(tipo);
-		}
+		tipo = tipo.toUpperCase();
+		switch (tipo) {
+		case "MARGARITA", "CUATRO_QUESOS", "FUNGHI" -> {
+			this.tipo = Tipo.valueOf(tipo);
 		}
 		}
 	}
 
 	/**
-	 * Obtenemos el estado
-	 * @return Estado de la pizza
+	 * Método get de estado
+	 * 
+	 * @return El estado de la pizza
 	 */
 	public Estado getEstado() {
 		return estado;
 	}
 
 	/**
-	 * Modificamos el estado
-	 * @param estado De la pizza
+	 * Método set de estado
+	 * 
+	 * @param estado El nuevo estado de la pizza
 	 */
 	public void setEstado(String estado) {
+		estado = estado.toUpperCase();
 		switch (estado) {
-		case "SERVIDA" -> {
-			this.estado = Estado.SERVIDA;
+		case "PEDIDA", "SERVIDA" -> {
+			this.estado = Estado.valueOf(estado);
 		}
 		}
 	}
 
 	/**
-	 * Obtenemos el código
+	 * Método get del código
+	 * 
 	 * @return El código de la pizza
 	 */
 	public int getCodigo() {
 		return codigo;
 	}
 
+	/**
+	 * Método toString de la clase Pizza
+	 */
 	@Override
 	public String toString() {
 		return codigo + ": " + tamaño + " - " + tipo + " - " + estado;
 	}
 
+	/**
+	 * Método equals de la clase Pizza
+	 */
 	@Override
 	public boolean equals(Object obj) {
-		Pizza other = (Pizza) obj;
+		Pizza pizza = (Pizza) obj;
 		boolean res = false;
-		
-		if (this.codigo == other.codigo) {
+		if (this.codigo == pizza.codigo) {
 			res = true;
 		}
-		
 		return res;
 	}
-	
-	
 }
