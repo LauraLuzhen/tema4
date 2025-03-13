@@ -1,40 +1,28 @@
 package boletin3.ej1;
 
+/**
+ * Clase suma donde se realizarán sumas
+ */
 public class Suma {
+	/**
+	 * Método que suma dos números enteros
+	 * 
+	 * @param a El primer número entero
+	 * @param b El segundo número entero
+	 * @return La suma entre ambos
+	 */
+	public static int suma(int a, int b) {
+		return a + b;
+	}
 
 	/**
-	 * Función que calcula la suma de dos números enteros
-	 * @param arg1 Número entero 1 
-	 * @param arg2 Número entero 2
-	 * @return La suma de ambos números enteros
+	 * Método que suma dos números decimales
+	 * 
+	 * @param a El primer número decimal
+	 * @param b El segundo número decimal
+	 * @return La suma entre ambos
 	 */
-	public int suma (int arg1, int arg2) {
-		int res;
-		
-		if (arg2 == 0.0) {
-			res = arg1;
-		} else {
-			res = suma(arg1 + 1,arg2 - 1);
-		}
-		
-		return res;
-	}
-	
-	/**
-	 * Función que calcula la suma de dos números decimales
-	 * @param arg1 Número decimal 1
-	 * @param arg2 Número decimal 2
-	 * @return La suma de ambos números decimales
-	 */
-	public double suma (double arg1, double arg2) {
-		double res;
-		
-		if (arg2 == 0) {
-			res = arg1;
-		} else {
-			res = suma(arg1 + 0.1, arg2 - 0.1);
-		}
-		
-		return res;
+	public static double suma(double a, double b) {
+		return a + b;
 	}
 }

@@ -1,41 +1,29 @@
 package boletin3.ej2;
 
+/**
+ * Clase media donde se calcularán las medias
+ */
 public class Media {
+	/**
+	 * Método que calcula la media entre dos números enteros
+	 * 
+	 * @param num1 Un número entero
+	 * @param num2 Otro número entero
+	 * @return La media entre ambos
+	 */
+	public static double media(int num1, int num2) {
+		return (num1 + num2) / 2.0;
+	}
 
 	/**
-	 * Función que calcula la media entre dos números enteros
-	 * @param arg1 Número entero 1
-	 * @param arg2 Número entero 2
-	 * @return La media en double de ambos números
+	 * Método que calcula la media ente tres números enteros
+	 * 
+	 * @param num1 Un número entero
+	 * @param num2 El segundo número entero
+	 * @param num3 El tercer número entero
+	 * @return La media entre los tres
 	 */
-	public double media (int arg1, int arg2) {
-		double res;
-		
-		if (arg2 == 0) {
-			res = (double)arg1 / 2;
-		} else {
-			res = media(arg1 + 1, arg2 - 1);
-		}
-		
-		return res;
-	}
-	
-	/**
-	 * Función que calcula la media entre 3 números enteros
-	 * @param arg1 Número entero 1
-	 * @param arg2 Número entero 2
-	 * @param arg3 Número entero 3
-	 * @return Media en double de los 3 números
-	 */
-	public double media (int arg1, int arg2, int arg3) {
-		double res;
-		
-		if (arg2 <= 0 && arg3 <= 0) {
-			res = (double)arg1 / 3;
-		} else {
-			res = media(arg1 + 1, arg2 - 1, arg3 - 1);
-		}
-		
-		return res;
+	public static double media(int num1, int num2, int num3) {
+		return (num1 + num2 + num3) / 3.0;
 	}
 }

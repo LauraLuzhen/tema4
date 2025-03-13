@@ -1,35 +1,40 @@
 package boletin3.ej3;
 
 public class SumaEnteros {
+	/**
+	 * Método que suma los números desde 1 hasta numero
+	 * 
+	 * @param numero Hasta
+	 * @return La suma
+	 */
+	public static int sumaEnteros(int numero) {
+		int suma = 0;
+		for (int i = 1; i <= numero; i++) {
+			suma += i;
+		}
+		return suma;
+	}
 
 	/**
-	 * Función que calcula la suma de 1 hasta el número introducido
-	 * @param num Hasta que queremos que sume
-	 * @return La suma de todos los números
+	 * Método que suma los números entre num1 y num2
+	 * 
+	 * @param num1 El primer número
+	 * @param num2 El segundo número
+	 * @return La suma entre sus números
 	 */
-	public int sumaEnteros (int num) {
-		int res = 0;
-		
-		for (int i = 1; i <= num; i++) {
-			res += i;
+	public static int sumaEnteros(int num1, int num2) {
+		int suma = 0;
+
+		// Asegurar que num1 sea menor que num2
+		if (num1 > num2) {
+			int temp = num1;
+			num1 = num2;
+			num2 = temp;
 		}
-		
-		return res;
-	}
-	
-	/**
-	 * Función que recibe dos números y suma todos los números entre el num1 y num 2
-	 * @param num1 Número entero 1
-	 * @param num2 Número entero 2
-	 * @return La suma de todos los números entre ambos 
-	 */
-	public int sumaEnteros (int num1, int num2) {
-		int res = 0;
-		
-		for(int i = num1; i <= num2; i++) {
-			res += i;
+
+		for (int i = num1; i <= num2; i++) {
+			suma += i;
 		}
-		
-		return res;
+		return suma;
 	}
 }

@@ -1,104 +1,81 @@
 package crud.ej1;
+// boletin 2 ej 3
 
+/**
+ * Clase Alumno donde vamos a guardar la información de un alumno
+ */
 public class Alumno {
-
 	/**
-	 * Varitable que almacena el nombre del alumno
+	 * Atributo nombre del alumno
 	 */
 	private String nombre;
-	
 	/**
-	 * Variable que almacena la nota del alumno
+	 * Atributo nota media del alumno
 	 */
-	private double nota;
-	
+	private double notaMedia;
+
 	/**
-	 * Variable que almacena la media de las notas 
+	 * Constructor de Alumno que recibe todos los atributos
+	 * 
+	 * @param nombre    El nombre del alumno
+	 * @param notaMedia La media del alumno
 	 */
-	private double media;
-	
-	/**
-	 * Constructor que recibe el nombre y media del alumno
-	 * @param nombre Del alumno
-	 * @param media De las notas del alumno
-	 */
-	public Alumno (String nombre, double media) {
+	public Alumno(String nombre, double notaMedia) {
 		if (nombre != null && !nombre.isBlank()) {
 			this.nombre = nombre;
 		}
-		if (media >= 0 && media <= 10) {
-			this.media = media;
+		if (notaMedia >= 0 && notaMedia <= 10) {
+			this.notaMedia = notaMedia;
 		}
 	}
 
 	/**
-	 * Obtiene el nombre
-	 * @return El nombre del alumno
+	 * Método get de la media
+	 * 
+	 * @return El valor de la media del alumno
+	 */
+	public double getNotaMedia() {
+		return notaMedia;
+	}
+
+	/**
+	 * Método set de la media
+	 * 
+	 * @param notaMedia El nuevo valor para la media del alumno
+	 */
+	public void setNotaMedia(double notaMedia) {
+		if (notaMedia >= 0 && notaMedia <= 10) {
+			this.notaMedia = notaMedia;
+		}
+	}
+
+	/**
+	 * Método get del nombre
+	 * 
+	 * @return El valor del nombre del alumno
 	 */
 	public String getNombre() {
 		return nombre;
 	}
 
 	/**
-	 * Modifica el nombre
-	 * @param nombre Del alumno
+	 * Método toString de la clase Alumno
 	 */
-	public void setNombre(String nombre) {
-		if (nombre != null && !nombre.isBlank()) {
-			this.nombre = nombre;
-		}
-	}
-
-	/**
-	 * Obtiene una nota
-	 * @return Una nota del alumno
-	 */
-	public double getNota() {
-		return nota;
-	}
-
-	/**
-	 * Modifica una nota
-	 * @param nota Del alumno
-	 */
-	public void setNota(double nota) {
-		if (nota >= 0 && nota <= 10) {
-			this.nota = nota;
-		}
-	}
-
-	/**
-	 * Obtiene la media
-	 * @return La media entre las notas del alumno
-	 */
-	public double getMedia() {
-		return media;
-	}
-
-	/**
-	 * Modifica la media
-	 * @param media De las notas del alumno
-	 */
-	public void setMedia(double media) {
-		if (media >= 0 && media <= 10) {
-			this.media = media;
-		}
-	}
-
 	@Override
 	public String toString() {
-		return nombre + " " + media;
+		return nombre + " " + notaMedia;
 	}
 
+	/**
+	 * Método equals de la clase Alumno
+	 */
 	@Override
 	public boolean equals(Object obj) {
-		Alumno other = (Alumno) obj;
+		Alumno alumno = (Alumno) obj;
 		boolean res = false;
-		
-		if (this.nombre.equals(other.nombre)) {
+		if (this.nombre.equals(alumno.nombre)) {
 			res = true;
 		}
-		
 		return res;
 	}
 }
