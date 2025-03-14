@@ -1,11 +1,11 @@
 package crud.ej1;
 
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Set;
 
 public class AlumnoCrud {
 
-	private static Set<Alumno> alumnos = new LinkedHashSet<Alumno>();
+	private static Set<Alumno> alumnos = new HashSet<Alumno>();
 
 	public static void listadoAlumnos() {
 		for (Alumno a: alumnos) {
@@ -32,7 +32,7 @@ public class AlumnoCrud {
 		Alumno alumno = null;
 		for (Alumno al: alumnos) {
 			if (al.equals(a)) {
-				alumno = a;
+				alumno = al;
 			}
 		}
 		return alumno;
